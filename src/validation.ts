@@ -1,4 +1,4 @@
-import { ColorType } from "./types";
+import { ColorType } from './types';
 
 // Accepted lengths of hex strings including '#'
 const VALID_HEX_LENGTHS = [4, 7, 9];
@@ -59,7 +59,7 @@ const validateRGB = (rgb: string): boolean => {
     return true;
   });
   return isValid;
-}
+};
 
 /**
  * Check if provided string is a valid RGBA value
@@ -101,8 +101,8 @@ const validateUnknown = (color: string): ColorType => {
   const isRgba = validateRGBA(color);
   if (isRgba) return ColorType.RGBA;
   const isRgb = validateRGB(color);
-  if (isRgb) return ColorType.RGB
+  if (isRgb) return ColorType.RGB;
   return ColorType.INVALID;
-}
+};
 
 export { VALID_HEX_CHARS, VALID_HEX_LENGTHS, validateHex, validateRGBA, validateRGB, validateUnknown };

@@ -1,4 +1,5 @@
-import { validateHex, validateRGB, validateRGBA } from './validation';
+import { ColorType } from './types';
+import { validateHex, validateRGB, validateRGBA, validateUnknown } from './validation';
 
 /**
  * Convert a hexadecimal number to decimal
@@ -60,4 +61,46 @@ const rgbToHex = (rgb: string): string => {
   return `#${decToHex(parseInt(arr[0]))}${decToHex(parseInt(arr[1]))}${decToHex(parseInt(arr[2]))}${decToHex(parseInt(arr[3]))}`;
 };
 
-export { hexToDec, hexToRgba, decToHex, rgbToHex };
+/**
+ * Convert a RGB value to RGBA
+ * Alpha value will be set to 0
+ * @param rgb | RGB value to be converted to RGBA
+ * @returns
+ */
+const rgbToRgba = (rgb: string): string => {
+  // Remove spaces from string
+  rgb = rgb.replace(/\s/g, '');
+  const isValid = validateRGBA(rgb) || validateRGB(rgb);
+  if (!isValid) throw new Error('Invalid RGB string!');
+  // Update prefix
+  rgb = rgb.substring(0, 3) + 'a' + rgb.substring(3);
+  // Add alpha value set to 0
+  rgb = rgb.substring(0, rgb.length - 1) + ',0' + rgb.substring(rgb.length - 1);
+  return rgb;
+};
+
+/**
+ * Convert a color string of unknown type to RGBA
+ * Accepts RGB, RGBA & Hex
+ * @param color | Color of unknown type to be converted to RGBA
+ * @throws {Error}
+ * @returns {string}
+ */
+const unknownToRgba = (color: string): string => {
+  const colorType = validateUnknown(color);
+  switch (colorType) {
+    case ColorType.HEX:
+      color = hexToRgba(color);
+      break;
+    case ColorType.RGB:
+      color = rgbToRgba(color);
+      break;
+    case ColorType.RGBA:
+      break;
+    case ColorType.INVALID:
+      throw new Error('Invalid color string provided!');
+  }
+  return color;
+};
+
+export { hexToDec, hexToRgba, decToHex, rgbToHex, rgbToRgba, unknownToRgba };

@@ -1,12 +1,17 @@
+import { hexToRgba, rgbToRgba, unknownToRgba } from './conversion';
+import { ColorType } from './types';
+import { validateUnknown } from './validation';
+
 // TODO: getLuminosity
 /**
  * Calculate the relative luminance of a given color
  * Formula: 0.2126 * R + 0.7152 * G + 0.0722 * B
  * https://www.w3.org/TR/WCAG20/#relativeluminancedef
- * @param color | Color to find luminance of
+ * @param color | Color to find luminance of. Accepts RGB, RGBA & Hex
  * @returns {string}
  */
 const getLuminosity = (color: string): string => {
+  color = unknownToRgba(color);
   return 'TODO';
 };
 
@@ -32,3 +37,5 @@ const getContrastRatio = (background: string, foreground: string): string => {
 const getTextColor = (background: string): string => {
   return 'TODO';
 };
+
+export { getLuminosity, getContrastRatio, getTextColor };
