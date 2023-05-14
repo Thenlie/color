@@ -112,7 +112,7 @@ const rgbaToArray = (rgba: string): Array<string> => {
   // Remove spaces from string
   rgba = rgba.replace(/\s/g, '');
   const isValid = validateRGBA(rgba);
-  if (!isValid) throw new Error('Invalid RGBA string provided!')
+  if (!isValid) throw new Error('Invalid RGBA string provided!');
   // Remove 'rgb' or 'rgba' prefix
   rgba = rgba.substring(4);
   // Remove parenthesis
