@@ -1,4 +1,4 @@
-import { validateHex, validateRgba } from './validation';
+import { validateHex, validateRGB, validateRGBA } from './validation';
 
 /**
  * Convert a hexadecimal number to decimal
@@ -41,23 +41,23 @@ const decToHex = (dec: number): string => {
 };
 
 /**
- * Convert a rgba or rgb value to a hex string
- * @param rgba | Rgba value to be converted to hex
+ * Convert a RGB or RGBA value to a hexadecimal string
+ * @param rgb | RGB/RGBA value to be converted to hexadecimal
  * @returns {string}
  */
-const rgbaToHex = (rgba: string): string => {
+const rgbToHex = (rgb: string): string => {
   // Remove spaces from string
-  rgba = rgba.replace(/\s/g, '');
-  const isValid = validateRgba(rgba);
-  if (!isValid) throw new Error('Invalid rgba string!');
-  const isRgba = rgba.substring(0, 4) === 'rgba';
+  rgb = rgb.replace(/\s/g, '');
+  const isValid = validateRGBA(rgb) || validateRGB(rgb);
+  if (!isValid) throw new Error('Invalid RGB string!');
+  const isRgba = rgb.substring(0, 4) === 'rgba';
   // Remove 'rgb' or 'rgba' prefix
-  rgba = isRgba ? rgba.substring(4) : rgba.substring(3);
+  rgb = isRgba ? rgb.substring(4) : rgb.substring(3);
   // Remove parenthesis
-  rgba = rgba.substring(1, rgba.length - 1);
-  const arr = rgba.split(',');
+  rgb = rgb.substring(1, rgb.length - 1);
+  const arr = rgb.split(',');
   if (arr.length < 4) arr.push('0');
   return `#${decToHex(parseInt(arr[0]))}${decToHex(parseInt(arr[1]))}${decToHex(parseInt(arr[2]))}${decToHex(parseInt(arr[3]))}`;
 };
 
-export { hexToDec, hexToRgba, decToHex, rgbaToHex };
+export { hexToDec, hexToRgba, decToHex, rgbToHex };

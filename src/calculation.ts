@@ -1,6 +1,7 @@
 // TODO: getLuminosity
 /**
  * Calculate the relative luminance of a given color
+ * Formula: 0.2126 * R + 0.7152 * G + 0.0722 * B
  * https://www.w3.org/TR/WCAG20/#relativeluminancedef
  * @param color | Color to find luminance of
  * @returns {string}
@@ -12,6 +13,7 @@ const getLuminosity = (color: string): string => {
 // TODO: getContrastRatio
 /**
  * Calculate the contrast ratio of two given colors
+ * Formula: (L1 + 0.05) / (L2 + 0.05)
  * @param background | The background color
  * @param foreground | The foreground color
  * @returns {string}
