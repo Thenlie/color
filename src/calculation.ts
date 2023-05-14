@@ -1,6 +1,4 @@
-import { hexToRgba, rgbToRgba, unknownToRgba } from './conversion';
-import { ColorType } from './types';
-import { validateUnknown } from './validation';
+import { rgbaToArray, unknownToRgba } from './conversion';
 
 // TODO: getLuminosity
 /**
@@ -11,7 +9,11 @@ import { validateUnknown } from './validation';
  * @returns {string}
  */
 const getLuminosity = (color: string): string => {
-  color = unknownToRgba(color);
+  const rgba = unknownToRgba(color);
+  const array = rgbaToArray(rgba);
+  const r = parseInt(array[0]) / 255;
+  const g = parseInt(array[1]) / 255;
+  const b = parseInt(array[2]) / 255;
   return 'TODO';
 };
 

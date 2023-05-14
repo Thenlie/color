@@ -103,4 +103,21 @@ const unknownToRgba = (color: string): string => {
   return color;
 };
 
-export { hexToDec, hexToRgba, decToHex, rgbToHex, rgbToRgba, unknownToRgba };
+/**
+ * Convert a RGBA string to an array of values
+ * @param rgba | RGBA string to be converted to array
+ * @returns {Array<string>}
+ */
+const rgbaToArray = (rgba: string): Array<string> => {
+  // Remove spaces from string
+  rgba = rgba.replace(/\s/g, '');
+  const isValid = validateRGBA(rgba);
+  if (!isValid) throw new Error('Invalid RGBA string provided!')
+  // Remove 'rgb' or 'rgba' prefix
+  rgba = rgba.substring(4);
+  // Remove parenthesis
+  rgba = rgba.substring(1, rgba.length - 1);
+  return rgba.split(',');
+};
+
+export { hexToDec, hexToRgba, decToHex, rgbToHex, rgbToRgba, unknownToRgba, rgbaToArray };
