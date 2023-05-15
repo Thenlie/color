@@ -69,7 +69,7 @@ const validateRGB = (rgb: string): boolean => {
 const validateRGBA = (rgba: string): boolean => {
   // Remove spaces from string
   rgba = rgba.replace(/\s/g, '');
-  const regex = /rgba\((\d{1,3},){2,3}\d{1,3}\)/gm;
+  const regex = /rgba\((\d{1,3},){3}\d{1,3}\)/gm;
   if (!regex.test(rgba)) return false;
   // Remove 'rgba' prefix
   rgba = rgba.substring(4);
