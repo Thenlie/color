@@ -9,6 +9,7 @@ import { rgbaToArray, unknownToRgba } from './conversion';
  * @returns {number}
  */
 const getLuminosity = (color: string): number => {
+  // TODO: Consider the alpha value
   const rgba = unknownToRgba(color);
   const array = rgbaToArray(rgba);
   const r = parseInt(array[0]) / 255;
@@ -32,8 +33,9 @@ const getLuminosity = (color: string): number => {
 const getContrastRatio = (background: string, foreground: string): number => {
   const backgroundLum = getLuminosity(background);
   const foregroundLum = getLuminosity(foreground);
-  // TODO: L1 should be the lighter color, not necessarily the background
-  const contrastRatio = (backgroundLum + 0.05) / (foregroundLum + 0.05);
+  const L1 = backgroundLum >= foregroundLum ? backgroundLum : foregroundLum;
+  const L2 = backgroundLum >= foregroundLum ? foregroundLum : backgroundLum;
+  const contrastRatio = (L1 + 0.05) / (L2 + 0.05);
   return contrastRatio;
 };
 
