@@ -1,32 +1,40 @@
 import { rgbaToArray, unknownToRgba } from './conversion';
 
-// TODO: getLuminosity
 /**
  * Calculate the relative luminance of a given color
+ * Accepts RGB, RGBA & Hex
  * Formula: 0.2126 * R + 0.7152 * G + 0.0722 * B
  * https://www.w3.org/TR/WCAG20/#relativeluminancedef
- * @param color | Color to find luminance of. Accepts RGB, RGBA & Hex
- * @returns {string}
+ * @param color | Color to find luminance of
+ * @returns {number}
  */
-const getLuminosity = (color: string): string => {
+const getLuminosity = (color: string): number => {
   const rgba = unknownToRgba(color);
   const array = rgbaToArray(rgba);
   const r = parseInt(array[0]) / 255;
   const g = parseInt(array[1]) / 255;
   const b = parseInt(array[2]) / 255;
-  return 'TODO';
+  const R = r <= 0.03928 ? r / 12.92 : ((r + 0.055) / 1.055) ** 2.4  
+  const G = g <= 0.03928 ? g / 12.92 : ((g + 0.055) / 1.055) ** 2.4  
+  const B = b <= 0.03928 ? b / 12.92 : ((b + 0.055) / 1.055) ** 2.4  
+  const luminosity = 0.2126 * R + 0.7152 * G + 0.0722 * B
+  return luminosity;
 };
 
-// TODO: getContrastRatio
 /**
  * Calculate the contrast ratio of two given colors
+ * Accepts RGB, RGBA & Hex
  * Formula: (L1 + 0.05) / (L2 + 0.05)
  * @param background | The background color
  * @param foreground | The foreground color
- * @returns {string}
+ * @returns {number}
  */
-const getContrastRatio = (background: string, foreground: string): string => {
-  return 'TODO';
+const getContrastRatio = (background: string, foreground: string): number => {
+  const backgroundLum = getLuminosity(background);
+  const foregroundLum = getLuminosity(foreground);
+  // TODO: L1 should be the lighter color, not necessarily the background
+  const contrastRatio = (backgroundLum + 0.05) / (foregroundLum + 0.05);
+  return contrastRatio;
 };
 
 // TODO: getTextColor
