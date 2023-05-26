@@ -56,21 +56,37 @@ describe('Conversion module (passing ✅)', () => {
 });
 
 describe('Conversion module (failing ❌)', () => {
-  xtest('hexToDec throws error when given invalid hex string', () => {});
   test('hexToRgba throws error when given invalid hex string', () => {
-    expect(hexToRgba('abc')).toThrowError(Error);
+    expect(() => hexToRgba('abc')).toThrow('Invalid hex string!');
+    expect(() => hexToRgba('#ffff')).toThrow('Invalid hex string!');
+    expect(() => hexToRgba('#fffffffff')).toThrow('Invalid hex string!');
+    expect(() => hexToRgba('00000z')).toThrow('Invalid hex string!');
+    expect(() => hexToRgba('')).toThrow('Invalid hex string!');
   });
-  xtest('decToHex throws error when given invalid number', () => {});
   test('rgbToHex throws error when given invalid rgb string', () => {
-    expect(rgbToHex('abc')).toThrowError();
+    expect(() => rgbToHex('abc')).toThrow('Invalid RGB string!');
+    expect(() => rgbToHex('#ffffff')).toThrow('Invalid RGB string!');
+    expect(() => rgbToHex('rbg(0,0,0)')).toThrow('Invalid RGB string!');
+    expect(() => rgbToHex('')).toThrow('Invalid RGB string!');
+    // expect(() => rgbToHex('rgba(0,0,0,0)')).toThrow('Invalid RGB string!');
   });
   test('rgbToRgba throws error when given invalid rgb string', () => {
-    expect(rgbToRgba('abc')).toThrowError();
+    expect(() => rgbToRgba('abc')).toThrow('Invalid RGB string!');
+    expect(() => rgbToRgba('#ffffff')).toThrow('Invalid RGB string!');
+    expect(() => rgbToRgba('rbg(0,0,0)')).toThrow('Invalid RGB string!');
+    expect(() => rgbToRgba('')).toThrow('Invalid RGB string!');
+    // expect(() => rgbToRgba('rgba(0,0,0,0)')).toThrow('Invalid RGB string!');
   });
   test('unknownToRgba throws error when given invalid color string', () => {
-    expect(unknownToRgba('abc')).toThrowError();
+    expect(() => unknownToRgba('abc')).toThrow('Invalid color string!');
+    expect(() => unknownToRgba('#ffff')).toThrow('Invalid color string!');
+    expect(() => unknownToRgba('rbg(0,0,0)')).toThrow('Invalid color string!');
+    expect(() => unknownToRgba('')).toThrow('Invalid color string!');
   });
   test('rgbaToArray throws error when given invalid RGBA string', () => {
-    expect(rgbaToArray('abc')).toThrowError();
+    expect(() => rgbaToArray('abc')).toThrow('Invalid RGBA string!');
+    expect(() => rgbaToArray('#fff')).toThrow('Invalid RGBA string!');
+    expect(() => rgbaToArray('#ffffff')).toThrow('Invalid RGBA string!');
+    expect(() => rgbaToArray('rgb(0,0,0)')).toThrow('Invalid RGBA string!');
   });
 });
