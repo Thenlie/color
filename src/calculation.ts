@@ -47,10 +47,11 @@ const getContrastRatio = (background: string, foreground: string): number => {
  * @returns {string}
  */
 const getTextColor = (background: string): string => {
-  if (getContrastRatio(background, '#ffffff') > getContrastRatio(background, '#000000')) {
-    return 'rgba(255,255,255,0)';
+  const rgba = unknownToRgba(background);
+  if (getLuminosity(rgba) > .5) {
+    return 'rgba(0,0,0,0)'
   } else {
-    return 'rgba(0,0,0,0)';
+    return 'rgba(255,255,255,0)' 
   }
 };
 
