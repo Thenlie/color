@@ -1,13 +1,13 @@
-import { Navigation } from './components'
-import { Home } from './screens'
+import { Navigation } from './components';
+import { Home } from './screens';
 
 const App = () => {
-  return (
-    <>
-        <Navigation />
-        <Home />
-    </>
-  )
-}
+    return (
+        <>
+            <Navigation />
+            <Home />
+        </>
+    );
+};
 
-export default App
+export default App;

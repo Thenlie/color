@@ -31,8 +31,8 @@ const useStyles = (): NavigationStyles => {
             fontSize: '24px',
             color: 'blue'
         }
-    }
-}
+    };
+};
 
 const Navigation = () => {
     const styles = useStyles();
@@ -45,7 +45,7 @@ const Navigation = () => {
                 <li style={styles.button}>Demo</li>
             </ul>
         </div>
-    )
+    );
 };
 
 export default Navigation;
