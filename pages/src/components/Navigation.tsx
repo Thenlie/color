@@ -1,4 +1,5 @@
 import type * as CSS from 'csstype';
+import { ScreenTypes } from '../types';
 
 interface NavigationStyles {
     container: CSS.Properties;
@@ -26,6 +27,7 @@ const useStyles = (): NavigationStyles => {
             padding: '0'
         },
         button: {
+            cursor: 'pointer',
             marginRight: '10px',
             marginLeft: '10px',
             fontSize: '24px',
@@ -34,15 +36,19 @@ const useStyles = (): NavigationStyles => {
     };
 };
 
-const Navigation = () => {
+interface NavigationProps  {
+    setPage: React.Dispatch<React.SetStateAction<ScreenTypes>>;
+}
+
+const Navigation = (props: NavigationProps) => {
     const styles = useStyles();
 
     return (
         <div style={styles.container}>
             <h1 style={styles.title}>COLORS</h1>
             <ul style={styles.buttonContainer}>
-                <li style={styles.button}>Home</li>
-                <li style={styles.button}>Demo</li>
+                <li style={styles.button} onClick={() => props.setPage(ScreenTypes.Home)}>Home</li>
+                <li style={styles.button} onClick={() => props.setPage(ScreenTypes.Demo)}>Demo</li>
             </ul>
         </div>
     );
