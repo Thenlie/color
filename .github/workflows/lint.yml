@@ -1,4 +1,4 @@
-name: CI
+name: ES-Lint
 on: 
   push:
     branches: [ "main", "develop" ]
