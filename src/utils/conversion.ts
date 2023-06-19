@@ -1,4 +1,4 @@
-import { ColorType } from './types';
+import { ColorType } from '../types';
 import { validateHex, validateRGB, validateRGBA, validateUnknown } from './validation';
 
 /**

@@ -1,6 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
 import { validateHex, validateRGB, validateRGBA, validateUnknown } from '../validation';
-import { ColorType } from '../types';
+import { ColorType } from '../../types';
 
 describe('Validation module', () => {
     test('validateHex accepts valid hex strings', () => {
