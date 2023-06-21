@@ -38,6 +38,7 @@ export const defaultTheme = {
   },
 };
 
+// Theme used for dev testing, should contain noticeably different colors
 export const testTheme = {
   primary: {
     base: '#ff0000',
@@ -75,4 +76,18 @@ export const testTheme = {
       disabled: '#dddddd',
     },
   },
+};
+
+// TODO: Make this a useable palette
+export const defaultPalette = {
+  primary: '#ff0000',
+  secondary: '#00ff00',
+  action: '#0000ff',
+};
+
+// Palette used for dev testing, should contain noticeably different colors
+export const testPalette = {
+  primary: '#ff0000',
+  secondary: '#00ff00',
+  action: '#0000ff',
 };
