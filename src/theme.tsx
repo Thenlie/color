@@ -1,6 +1,7 @@
 import { getTextColor } from './calculation';
 import { defaultPalette } from './defaultThemes';
 import { ColorTheme, Palette } from './types';
+import { validateUnknown } from './validation';
 
 // TODO: Check if we should initialize to defaultTheme
 const ThemeContext = React.createContext({
@@ -8,9 +9,10 @@ const ThemeContext = React.createContext({
 });
 
 /**
- * Hook that returns a theme object
+ * Hook that returns a theme object based on a palette
  * @param {Palette} | Custom palette to build theme off of
  * @returns {ColorTheme}
+ * @todo Return complete theme. Consider moving to /hooks
  */
 const useTheme = ({ primary, secondary, action }: Palette): ColorTheme => {
   return {
@@ -57,10 +59,14 @@ interface ThemeProviderProps {
  * }
  * ```
  *
- * TODO: Validate palette before passing to provider
+ * @todo Validate palette before passing to provider
  */
 const ThemeProvider = ({ children, palette = defaultPalette }: ThemeProviderProps) => {
+  const isValid = validateUnknown(palette.primary) && validateUnknown(palette.secondary) && validateUnknown(palette.action);
+  if (!isValid) throw new Error('Invalid palette provided to ThemeProvider!');
+
   const { theme } = useTheme(palette);
+
   return <ThemeContext.Provider value={useMemo(() => ({ theme }), [theme])}>{children}</ThemeContext.Provider>;
 };
 
