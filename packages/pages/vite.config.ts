@@ -7,10 +7,10 @@ export default defineConfig({
   base: 'https://thenlie.github.io/color/',
   server: {
     fs: {
-        allow: [
-            searchForWorkspaceRoot(process.cwd()),
-            '../theme'
-        ]
+      allow: [
+        searchForWorkspaceRoot(process.cwd()),
+        '../rgbee'
+      ]
     }
   }
 });
