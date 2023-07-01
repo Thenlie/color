@@ -1,3 +1,4 @@
+import React, { useMemo } from 'react';
 import { getTextColor } from './calculation';
 import { defaultPalette } from './defaultThemes';
 import { ColorTheme, Palette } from './types';
@@ -19,20 +20,38 @@ const useTheme = ({ primary, secondary, action }: Palette): ColorTheme => {
     theme: {
       primary: {
         base: primary,
+        soft: primary,
+        heavy: primary,
+        disabled: primary,
+        hover: primary,
         text: {
           base: getTextColor(primary),
+          soft: getTextColor(primary),
+          disabled: getTextColor(primary),
         },
       },
       secondary: {
         base: secondary,
+        soft: secondary,
+        heavy: secondary,
+        disabled: secondary,
+        hover: secondary,
         text: {
           base: getTextColor(secondary),
+          soft: getTextColor(secondary),
+          disabled: getTextColor(secondary),
         },
       },
       action: {
         base: action,
+        soft: action,
+        heavy: action,
+        disabled: action,
+        hover: action,
         text: {
           base: getTextColor(action),
+          soft: getTextColor(action),
+          disabled: getTextColor(action),
         },
       },
     },
@@ -65,7 +84,7 @@ const ThemeProvider = ({ children, palette = defaultPalette }: ThemeProviderProp
   const isValid = validateUnknown(palette.primary) && validateUnknown(palette.secondary) && validateUnknown(palette.action);
   if (!isValid) throw new Error('Invalid palette provided to ThemeProvider!');
 
-  const { theme } = useTheme(palette);
+  const theme = useTheme(palette);
 
   return <ThemeContext.Provider value={useMemo(() => ({ theme }), [theme])}>{children}</ThemeContext.Provider>;
 };
