@@ -1,0 +1,8 @@
+{
+    "cSpell.words": [
+        "csstype"
+    ],
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": "file:///Users/leithen/Code/typescript/color/.github/workflows/deploy.yml"
+    }
+}

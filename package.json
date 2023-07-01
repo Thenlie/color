@@ -1,29 +1,7 @@
 {
-  "name": "color-test",
-  "version": "1.0.0",
-  "description": "",
-  "type": "module",
-  "main": "index.js",
-  "scripts": {
-    "test": "jest --silent",
-    "lint": "npx eslint --ext .ts,.tsx,.js,.jsx src pages/src --fix"
-  },
-  "keywords": [],
-  "author": "Thenlie",
-  "license": "MIT",
-  "devDependencies": {
-    "@types/jest": "^29.5.1",
-    "@types/react": "^18.2.14",
-    "@typescript-eslint/eslint-plugin": "^5.59.11",
-    "@typescript-eslint/parser": "^5.59.11",
-    "eslint": "^8.43.0",
-    "eslint-plugin-react": "^7.32.2",
-    "jest": "^29.5.0",
-    "prettier": "2.8.8",
-    "ts-jest": "^29.1.0",
-    "typescript": "^5.0.4"
-  },
-  "dependencies": {
-    "react": "^18.2.0"
-  }
+    "name": "color-demo",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "author": "Thenlie"
 }
