@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Navigation } from './components';
 import { Home, Demo } from './screens';
 import { ScreenTypes } from './types';
-import {ThemeProvider} from '../../theme/src/theme';
+import { ThemeProvider } from '../../rgbee/src/theme';
 
 const App = () => {
   const [page, setPage] = useState<ScreenTypes>(ScreenTypes.Home);
