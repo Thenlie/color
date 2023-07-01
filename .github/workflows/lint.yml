@@ -17,4 +17,4 @@ jobs:
     - name: Install modules
       run: npm ci
     - name: Run ESLint
-      run: npx eslint --ext .ts,.tsx,.js,.jsx packages/theme/src packages/pages/src --fix
+      run: npx eslint --ext .ts,.tsx,.js,.jsx packages/rgbee/src packages/pages/src --fix
