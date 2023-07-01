@@ -1,12 +1,12 @@
-import { useContext } from "react";
-import { ThemeContext } from "../../../theme/src/theme";
+import { useContext } from 'react';
+import { ThemeContext } from '../../../theme/src/theme';
 
 const Home = () => {
-  const theme = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   console.log(theme);
 
   return (
-    <p>Home Screen</p>
+    <pre>{JSON.stringify(theme, undefined, 2)}</pre>
   );
 };
 
