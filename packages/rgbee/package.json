@@ -1,9 +1,9 @@
 {
-  "name": "color-test",
+  "name": "rgbee",
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "index.js",
+  "main": "theme.tsx",
   "scripts": {
     "test": "jest --silent",
     "lint": "npx eslint --ext .ts,.tsx,.js,.jsx src ../pages/src --fix"

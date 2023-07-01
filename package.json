@@ -1,13 +1,13 @@
 {
-    "name": "color-test",
+    "name": "rgbee",
     "version": "1.0.0",
-    "description": "",
+    "description": "A theme generation framework for React apps",
     "type": "module",
-    "main": "index.js",
+    "main": "packages/rgbee/theme.tsx",
     "scripts": {
-        "postinstall": "concurrently  \"cd packages/theme && npm install\" \"cd packages/pages && npm install\"",
-        "test": "echo \"⚠️  No global test files. Did you mean to cd packages/theme && npm test?\" && exit 1",
-        "lint": "npx eslint --ext .ts,.tsx,.js,.jsx packages/theme/src packages/pages/src --fix"
+        "postinstall": "concurrently  \"cd packages/rgbee && npm install\" \"cd packages/pages && npm install\"",
+        "test": "echo \"⚠️  No global test files. Did you mean to cd packages/rgbee && npm test?\" && exit 1",
+        "lint": "npx eslint --ext .ts,.tsx,.js,.jsx packages/rgbee/src packages/pages/src --fix"
     },
     "keywords": [],
     "author": "Thenlie",
