@@ -1,8 +1,5 @@
-import { ColorType } from './types';
-
-// Accepted lengths of hex strings including '#'
-const VALID_HEX_LENGTHS = [4, 7, 9];
-const VALID_HEX_CHARS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+import { ColorType } from '../types';
+import { VALID_HEX_CHARS, VALID_HEX_LENGTHS } from '../constants';
 
 /**
  * Check if a provided string is a valid hex value
@@ -11,7 +8,7 @@ const VALID_HEX_CHARS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 
  */
 const validateHex = (hex: string): boolean => {
   if (hex.charAt(0) !== '#') {
-    console.error("Invalid hex string! Not prefixed with '#'.");
+    console.error(`Invalid hex string ${hex}! Not prefixed with '#'.`);
     return false;
   }
   if (!VALID_HEX_LENGTHS.includes(hex.length)) {

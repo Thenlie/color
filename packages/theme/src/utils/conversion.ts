@@ -1,4 +1,4 @@
-import { ColorType } from './types';
+import { ColorType } from '../types';
 import { validateHex, validateRGB, validateRGBA, validateUnknown } from './validation';
 
 /**
@@ -89,16 +89,16 @@ const rgbToRgba = (rgb: string): string => {
 const unknownToRgba = (color: string): string => {
   const colorType = validateUnknown(color);
   switch (colorType) {
-    case ColorType.HEX:
-      color = hexToRgba(color);
-      break;
-    case ColorType.RGB:
-      color = rgbToRgba(color);
-      break;
-    case ColorType.RGBA:
-      break;
-    case ColorType.INVALID:
-      throw new Error('Invalid color string!');
+  case ColorType.HEX:
+    color = hexToRgba(color);
+    break;
+  case ColorType.RGB:
+    color = rgbToRgba(color);
+    break;
+  case ColorType.RGBA:
+    break;
+  case ColorType.INVALID:
+    throw new Error('Invalid color string!');
   }
   return color;
 };

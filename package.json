@@ -1,20 +1,24 @@
 {
-  "name": "color-test",
-  "version": "1.0.0",
-  "description": "",
-  "type": "module",
-  "main": "index.js",
-  "scripts": {
-    "test": "jest --silent"
-  },
-  "keywords": [],
-  "author": "Thenlie",
-  "license": "MIT",
-  "devDependencies": {
-    "@types/jest": "^29.5.1",
-    "jest": "^29.5.0",
-    "prettier": "2.8.8",
-    "ts-jest": "^29.1.0",
-    "typescript": "^5.0.4"
-  }
+    "name": "color-test",
+    "version": "1.0.0",
+    "description": "",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "postinstall": "concurrently  \"cd packages/theme && npm install\" \"cd packages/pages && npm install\"",
+        "test": "echo \"⚠️  No global test files. Did you mean to cd packages/theme && npm test?\" && exit 1",
+        "lint": "npx eslint --ext .ts,.tsx,.js,.jsx packages/theme/src packages/pages/src --fix"
+    },
+    "keywords": [],
+    "author": "Thenlie",
+    "license": "MIT",
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^5.60.1",
+        "@typescript-eslint/parser": "^5.59.11",
+        "concurrently": "^8.2.0",
+        "eslint": "^8.43.0",
+        "eslint-plugin-react": "^7.32.2",
+        "prettier": "2.8.8",
+        "typescript": "^5.0.4"
+    }
 }
