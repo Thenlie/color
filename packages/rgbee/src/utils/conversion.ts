@@ -1,5 +1,5 @@
 import { ColorType } from '../types';
-import { validateHex, validateRGB, validateRGBA, validateUnknown } from './validation';
+import { validateColorType, validateHex, validateRGB, validateRGBA } from './validation';
 
 /**
  * Convert a hexadecimal number to decimal
@@ -87,7 +87,7 @@ const rgbToRgba = (rgb: string): string => {
  * @returns {string}
  */
 const unknownToRgba = (color: string): string => {
-  const colorType = validateUnknown(color);
+  const colorType = validateColorType(color);
   switch (colorType) {
   case ColorType.HEX:
     color = hexToRgba(color);

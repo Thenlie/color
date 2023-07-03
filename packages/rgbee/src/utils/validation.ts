@@ -1,4 +1,4 @@
-import { ColorType } from '../types';
+import { ColorType, Palette } from '../types';
 import { VALID_HEX_CHARS, VALID_HEX_LENGTHS } from '../constants';
 
 /**
@@ -90,9 +90,24 @@ const validateRGBA = (rgba: string): boolean => {
  * Validate a string of unknown color type
  * Return the color type
  * @param color | Color string to be validated
+ * @returns {boolean}
+ */
+const validateUnknown = (color: string): boolean => {
+  const isHex = validateHex(color);
+  if (isHex) return true;
+  const isRgba = validateRGBA(color);
+  if (isRgba) return true;
+  const isRgb = validateRGB(color);
+  if (isRgb) return true;
+  return false;
+};
+
+/**
+ * Returns a color type given an unknown color string
+ * @param color | Unknown color to be validated
  * @returns {ColorType}
  */
-const validateUnknown = (color: string): ColorType => {
+const validateColorType = (color: string): ColorType => {
   const isHex = validateHex(color);
   if (isHex) return ColorType.HEX;
   const isRgba = validateRGBA(color);
@@ -102,4 +117,25 @@ const validateUnknown = (color: string): ColorType => {
   return ColorType.INVALID;
 };
 
-export { VALID_HEX_CHARS, VALID_HEX_LENGTHS, validateHex, validateRGBA, validateRGB, validateUnknown };
+/**
+ * Validate a custom 3-color palette
+ * @param palette | Custom color palette to be validated
+ * @returns {boolean}
+ */
+const validatePalette = (palette: Palette): boolean => {
+  if (!palette.primary || !palette.secondary || !palette.action) return false;
+  console.log(validateUnknown(palette.primary));
+  const isValid = validateUnknown(palette.primary) && validateUnknown(palette.secondary) && validateUnknown(palette.action);
+  return isValid;
+};
+
+export { 
+  VALID_HEX_CHARS,
+  VALID_HEX_LENGTHS,
+  validateHex,
+  validateRGBA,
+  validateRGB,
+  validateUnknown,
+  validateColorType,
+  validatePalette
+};

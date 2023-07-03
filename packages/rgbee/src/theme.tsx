@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { getTextColor } from './utils/calculation';
 import { defaultPalette } from './defaultThemes';
 import { ColorTheme, Palette } from './types';
-import { validateUnknown } from './utils/validation';
+import { validatePalette } from './utils/validation';
 
 // TODO: Check if we should initialize to defaultTheme
 const ThemeContext = React.createContext({
@@ -82,7 +82,7 @@ interface ThemeProviderProps {
  */
 const ThemeProvider = ({ children, palette = defaultPalette }: ThemeProviderProps) => {
   console.log(palette);
-  const isValid = validateUnknown(palette.primary) && validateUnknown(palette.secondary) && validateUnknown(palette.action);
+  const isValid = validatePalette(palette);
   if (!isValid) throw new Error('Invalid palette provided to ThemeProvider!');
 
   const { theme } = useTheme(palette);
