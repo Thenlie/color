@@ -1,4 +1,4 @@
 export enum ScreenTypes {
-    Home = 'Home',
-    Demo = 'Demo',
+  Home = 'Home',
+  Demo = 'Demo',
 }

@@ -1,5 +1,10 @@
 import { ColorType } from '../types';
-import { validateColorType, validateHex, validateRGB, validateRGBA } from './validation';
+import {
+  validateColorType,
+  validateHex,
+  validateRGB,
+  validateRGBA,
+} from './validation';
 
 /**
  * Convert a hexadecimal number to decimal
@@ -27,7 +32,9 @@ const hexToRgba = (hex: string): string => {
   if (!arr) throw new Error('Something went wrong!');
   // Fill in alpha value if needed
   if (arr.length < 4) arr.push('0');
-  return `rgba(${hexToDec(arr[0])},${hexToDec(arr[1])},${hexToDec(arr[2])},${hexToDec(arr[3])})`;
+  return `rgba(${hexToDec(arr[0])},${hexToDec(arr[1])},${hexToDec(
+    arr[2]
+  )},${hexToDec(arr[3])})`;
 };
 
 /**
@@ -58,7 +65,9 @@ const rgbToHex = (rgb: string): string => {
   rgb = rgb.substring(1, rgb.length - 1);
   const arr = rgb.split(',');
   if (arr.length < 4) arr.push('0');
-  return `#${decToHex(parseInt(arr[0]))}${decToHex(parseInt(arr[1]))}${decToHex(parseInt(arr[2]))}${decToHex(parseInt(arr[3]))}`;
+  return `#${decToHex(parseInt(arr[0]))}${decToHex(parseInt(arr[1]))}${decToHex(
+    parseInt(arr[2])
+  )}${decToHex(parseInt(arr[3]))}`;
 };
 
 /**
@@ -89,16 +98,16 @@ const rgbToRgba = (rgb: string): string => {
 const unknownToRgba = (color: string): string => {
   const colorType = validateColorType(color);
   switch (colorType) {
-  case ColorType.HEX:
-    color = hexToRgba(color);
-    break;
-  case ColorType.RGB:
-    color = rgbToRgba(color);
-    break;
-  case ColorType.RGBA:
-    break;
-  case ColorType.INVALID:
-    throw new Error('Invalid color string!');
+    case ColorType.HEX:
+      color = hexToRgba(color);
+      break;
+    case ColorType.RGB:
+      color = rgbToRgba(color);
+      break;
+    case ColorType.RGBA:
+      break;
+    case ColorType.INVALID:
+      throw new Error('Invalid color string!');
   }
   return color;
 };
@@ -120,4 +129,12 @@ const rgbaToArray = (rgba: string): Array<string> => {
   return rgba.split(',');
 };
 
-export { hexToDec, hexToRgba, decToHex, rgbToHex, rgbToRgba, unknownToRgba, rgbaToArray };
+export {
+  hexToDec,
+  hexToRgba,
+  decToHex,
+  rgbToHex,
+  rgbToRgba,
+  unknownToRgba,
+  rgbaToArray,
+};

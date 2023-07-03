@@ -15,7 +15,8 @@
     },
     "plugins": [
         "@typescript-eslint",
-        "react"
+        "react",
+        "prettier"
     ],
     "settings": {
         "react": {
@@ -25,7 +26,10 @@
     "rules": {
         "indent": [
             "error",
-            2
+            2,
+            {
+                "SwitchCase": 1
+            }
         ],
         "linebreak-style": [
             "error",
@@ -39,6 +43,8 @@
             "error",
             "always"
         ],
-        "react/react-in-jsx-scope": "off"
+        "react/react-in-jsx-scope": "off",
+        "prettier/prettier": "error",
+        "no-console": "warn"
     }
 }

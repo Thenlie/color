@@ -15,7 +15,11 @@ const ThemeContext = React.createContext({
  * @returns {ColorTheme}
  * @todo Return complete theme. Consider moving to /hooks
  */
-const useTheme = ({ primary, secondary, action }: Palette): { theme: ColorTheme } => {
+const useTheme = ({
+  primary,
+  secondary,
+  action,
+}: Palette): { theme: ColorTheme } => {
   return {
     theme: {
       primary: {
@@ -80,14 +84,21 @@ interface ThemeProviderProps {
  *
  * @todo Validate palette before passing to provider
  */
-const ThemeProvider = ({ children, palette = defaultPalette }: ThemeProviderProps) => {
+const ThemeProvider = ({
+  children,
+  palette = defaultPalette,
+}: ThemeProviderProps) => {
   console.log(palette);
   const isValid = validatePalette(palette);
   if (!isValid) throw new Error('Invalid palette provided to ThemeProvider!');
 
   const { theme } = useTheme(palette);
 
-  return <ThemeContext.Provider value={useMemo(() => ({ theme }), [theme])}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={useMemo(() => ({ theme }), [theme])}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
 
 export { ThemeProvider, ThemeContext };

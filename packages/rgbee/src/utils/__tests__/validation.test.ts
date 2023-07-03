@@ -1,5 +1,12 @@
 import { describe, expect, test } from '@jest/globals';
-import { validateColorType, validateHex, validatePalette, validateRGB, validateRGBA, validateUnknown } from '../validation';
+import {
+  validateColorType,
+  validateHex,
+  validatePalette,
+  validateRGB,
+  validateRGBA,
+  validateUnknown,
+} from '../validation';
 import { ColorType } from '../../types';
 
 describe('Validation module passing', () => {
@@ -53,7 +60,7 @@ describe('Validation module passing', () => {
     const palette = {
       primary: '#ffff00',
       secondary: '#0fff00',
-      action: '#000fff'
+      action: '#000fff',
     };
     expect(validatePalette(palette)).toEqual(true);
   });
@@ -101,13 +108,13 @@ describe('Validation module failing', () => {
 
   test('validateColorType returns invalid color type', () => {
     expect(validateColorType('#00')).toEqual(ColorType.INVALID);
-  }); 
+  });
 
   test('validatePalette rejects invalid color palettes', () => {
     const palette = {
       primary: '#ff',
       secondary: '#0fff00',
-      action: '#000fff'
+      action: '#000fff',
     };
     expect(validatePalette(palette)).toEqual(false);
   });

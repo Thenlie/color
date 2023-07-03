@@ -12,7 +12,11 @@ const validateHex = (hex: string): boolean => {
     return false;
   }
   if (!VALID_HEX_LENGTHS.includes(hex.length)) {
-    console.error(`Invalid hex string! String length must be ${VALID_HEX_LENGTHS.join(',')} including the '#'.`);
+    console.error(
+      `Invalid hex string! String length must be ${VALID_HEX_LENGTHS.join(
+        ','
+      )} including the '#'.`
+    );
     return false;
   }
   // Remove '#' prefix
@@ -21,7 +25,11 @@ const validateHex = (hex: string): boolean => {
   let isValid = true;
   hex.split('').every((x) => {
     if (!VALID_HEX_CHARS.includes(x)) {
-      console.error(`Invalid hex string! String must only contain [${VALID_HEX_CHARS.join(',')}].`);
+      console.error(
+        `Invalid hex string! String must only contain [${VALID_HEX_CHARS.join(
+          ','
+        )}].`
+      );
       isValid = false;
       return false;
     }
@@ -125,11 +133,14 @@ const validateColorType = (color: string): ColorType => {
 const validatePalette = (palette: Palette): boolean => {
   if (!palette.primary || !palette.secondary || !palette.action) return false;
   console.log(validateUnknown(palette.primary));
-  const isValid = validateUnknown(palette.primary) && validateUnknown(palette.secondary) && validateUnknown(palette.action);
+  const isValid =
+    validateUnknown(palette.primary) &&
+    validateUnknown(palette.secondary) &&
+    validateUnknown(palette.action);
   return isValid;
 };
 
-export { 
+export {
   VALID_HEX_CHARS,
   VALID_HEX_LENGTHS,
   validateHex,
@@ -137,5 +148,5 @@ export {
   validateRGB,
   validateUnknown,
   validateColorType,
-  validatePalette
+  validatePalette,
 };

@@ -6,42 +6,42 @@ enum ColorType {
 }
 
 type ColorTheme = {
-    primary: {
+  primary: {
+    base: string;
+    soft: string;
+    heavy: string;
+    disabled: string;
+    hover: string;
+    text: {
       base: string;
       soft: string;
-      heavy: string;
       disabled: string;
-      hover: string;
-      text: {
-        base: string;
-        soft: string;
-        disabled: string;
-      };
     };
-    secondary: {
+  };
+  secondary: {
+    base: string;
+    disabled: string;
+    hover: string;
+    heavy: string;
+    soft: string;
+    text: {
       base: string;
-      disabled: string;
-      hover: string;
-      heavy: string;
       soft: string;
-      text: {
-        base: string;
-        soft: string;
-        disabled: string;
-      };
+      disabled: string;
     };
-    action: {
+  };
+  action: {
+    base: string;
+    disabled: string;
+    hover: string;
+    heavy: string;
+    soft: string;
+    text: {
       base: string;
-      disabled: string;
-      hover: string;
-      heavy: string;
       soft: string;
-      text: {
-        base: string;
-        soft: string;
-        disabled: string;
-      };
+      disabled: string;
     };
+  };
 };
 
 type Palette = {

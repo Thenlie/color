@@ -9,9 +9,9 @@ const App = () => {
   const palette = {
     primary: '#ffff00',
     secondary: '#0fff00',
-    action: '#000fff'
+    action: '#000fff',
   };
-    
+
   return (
     <ThemeProvider palette={palette}>
       <Navigation setPage={setPage} />

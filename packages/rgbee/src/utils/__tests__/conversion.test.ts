@@ -1,5 +1,13 @@
 import { describe, expect, test } from '@jest/globals';
-import { hexToDec, hexToRgba, decToHex, rgbToHex, rgbToRgba, unknownToRgba, rgbaToArray } from '../conversion';
+import {
+  hexToDec,
+  hexToRgba,
+  decToHex,
+  rgbToHex,
+  rgbToRgba,
+  unknownToRgba,
+  rgbaToArray,
+} from '../conversion';
 
 describe('Conversion module (passing ✅)', () => {
   test('hexToDec correctly converts hexadecimal to decimal', () => {
@@ -49,7 +57,12 @@ describe('Conversion module (passing ✅)', () => {
   });
   test('rgbaToArray correctly converts RGBA to an array of values', () => {
     expect(rgbaToArray('rgba(0,0,0,0)')).toEqual(['0', '0', '0', '0']);
-    expect(rgbaToArray('rgba(255,255,255,1)')).toEqual(['255', '255', '255', '1']);
+    expect(rgbaToArray('rgba(255,255,255,1)')).toEqual([
+      '255',
+      '255',
+      '255',
+      '1',
+    ]);
     expect(rgbaToArray('rgba(1,23,234,1)')).toEqual(['1', '23', '234', '1']);
     expect(rgbaToArray('rgba(34,5,21,0)')).toEqual(['34', '5', '21', '0']);
   });
