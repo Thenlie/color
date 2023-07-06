@@ -1,5 +1,5 @@
 import { unknownToRgba } from './conversion';
-import { validateRGBA, validateUnknown } from './validation';
+import { validateOpacity, validateRGBA, validateUnknown } from './validation';
 
 /**
  * Update the opacity value of a given color
@@ -10,15 +10,18 @@ import { validateRGBA, validateUnknown } from './validation';
  */
 const updateOpacity = (color: string, opacity: number): string => {
   let isValid = validateUnknown(color);
-  // TODO: Create opacity validation function
   if (!isValid) throw new Error('Invalid color string!');
+  isValid = validateOpacity(opacity);
+  if (!isValid) throw new Error('Invalid opacity value!');
   const rgba = unknownToRgba(color);
   const newRgba = rgba.replace(
     /,(\d\.\d|\d{1,3})\)/gm,
     `,${opacity.toString()})`
   );
   isValid = validateRGBA(newRgba);
-  if (!isValid) throw new Error('Invalid color string!' + newRgba);
+  if (!isValid) {
+    throw new Error('Oops, something went wrong! See src/utils/processing.tsx');
+  }
   return newRgba;
 };
 

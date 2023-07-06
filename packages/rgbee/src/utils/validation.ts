@@ -47,7 +47,7 @@ const validateHex = (hex: string): boolean => {
 const validateRGB = (rgb: string): boolean => {
   // Remove spaces from string
   rgb = rgb.replace(/\s/g, '');
-  const regex = /rgb\((\d{1,3},){2}\d{1,3}\)/gm;
+  const regex = /rgb\((\d{1,3},){2}\d{1,3}\)/g;
   if (!regex.test(rgb)) return false;
   // Remove 'rgb' prefix
   rgb = rgb.substring(3);
@@ -76,7 +76,7 @@ const validateRGBA = (rgba: string): boolean => {
   // Remove spaces from string
   // TODO: Break out into dedicated function
   rgba = rgba.replace(/\s/g, '');
-  const regex = /rgba\((\d{1,3},){3}(\d.\d|\d{1,3})\)/gm;
+  const regex = /rgba\((\d{1,3},){3}(\d.\d|\d{1,3})\)/g;
   if (!regex.test(rgba)) return false;
   // Remove 'rgba' prefix
   rgba = rgba.substring(4);
@@ -142,6 +142,18 @@ const validatePalette = (palette: Palette): boolean => {
   return isValid;
 };
 
+/**
+ * Returns true if provided value is between 0.0 - 1.0
+ * Must contain no more than one significant figure
+ * @param opacity | Opacity value to be validated
+ * @returns {boolean}
+ */
+const validateOpacity = (opacity: number): boolean => {
+  if (opacity === 0 || opacity === 1) return true;
+  const regex = /(0.\d|1.0)$/g;
+  return regex.test(opacity.toString());
+};
+
 export {
   validateHex,
   validateRGBA,
@@ -149,4 +161,5 @@ export {
   validateUnknown,
   validateColorType,
   validatePalette,
+  validateOpacity,
 };
