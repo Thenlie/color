@@ -2,6 +2,7 @@ import { describe, expect, test } from '@jest/globals';
 import {
   validateColorType,
   validateHex,
+  validateOpacity,
   validatePalette,
   validateRGB,
   validateRGBA,
@@ -65,6 +66,16 @@ describe('Validation module passing', () => {
     };
     expect(validatePalette(palette)).toEqual(true);
   });
+
+  test('validateOpacity accepts valid opacity values', () => {
+    expect(validateOpacity(0.1)).toBe(true);
+    expect(validateOpacity(1)).toBe(true);
+    expect(validateOpacity(0)).toBe(true);
+    expect(validateOpacity(1.0)).toBe(true);
+    expect(validateOpacity(0.9)).toBe(true);
+    expect(validateOpacity(0.3)).toBe(true);
+    expect(validateOpacity(0.0)).toBe(true);
+  });
 });
 
 describe('Validation module failing', () => {
@@ -118,5 +129,15 @@ describe('Validation module failing', () => {
       action: '#000fff',
     };
     expect(validatePalette(palette)).toEqual(false);
+  });
+
+  test('validateOpacity rejects invalid opacity values', () => {
+    expect(validateOpacity(2)).toBe(false);
+    expect(validateOpacity(3)).toBe(false);
+    expect(validateOpacity(0.12)).toBe(false);
+    expect(validateOpacity(1.1)).toBe(false);
+    expect(validateOpacity(1.9)).toBe(false);
+    expect(validateOpacity(2.3)).toBe(false);
+    expect(validateOpacity(0.99)).toBe(false);
   });
 });
