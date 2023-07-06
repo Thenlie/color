@@ -54,6 +54,7 @@ describe('Conversion module (passing ✅)', () => {
     expect(unknownToRgba('rgb(255,255,255)')).toEqual('rgba(255,255,255,0)');
     expect(unknownToRgba('rgba(255,255,255,0)')).toEqual('rgba(255,255,255,0)');
     expect(unknownToRgba('rgba(0,0,0,0)')).toEqual('rgba(0,0,0,0)');
+    expect(unknownToRgba('rgba(0, 0, 0, 0)')).toEqual('rgba(0,0,0,0)');
   });
   test('rgbaToArray correctly converts RGBA to an array of values', () => {
     expect(rgbaToArray('rgba(0,0,0,0)')).toEqual(['0', '0', '0', '0']);

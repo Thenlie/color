@@ -35,6 +35,7 @@ describe('Validation module passing', () => {
     expect(validateRGBA('rgba(25,0,12,255)')).toEqual(true);
     expect(validateRGBA('rgba(1,255,255,0)')).toEqual(true);
     expect(validateRGBA('rgba(55,25,255,0)')).toEqual(true);
+    expect(validateRGBA('rgba(0,0,0,0.1)')).toEqual(true);
   });
 
   // validateUnknown uses the functions above behind the scenes

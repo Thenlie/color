@@ -99,6 +99,7 @@ const unknownToRgba = (color: string): string => {
   const colorType = validateColorType(color);
   switch (colorType) {
     case ColorType.RGBA:
+      color = color.replace(/\s/g, '');
       break;
     case ColorType.RGB:
       color = rgbToRgba(color);

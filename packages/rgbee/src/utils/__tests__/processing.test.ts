@@ -9,8 +9,6 @@ describe('Processing module', () => {
       'rgba(255,255,255,0.5)'
     );
     expect(updateOpacity('rgb(0,0,0)', 1)).toEqual('rgba(0,0,0,1)');
-    expect(updateOpacity('rgba(132, 23, 2, 1)', 1)).toEqual(
-      'rgba(132, 23, 2, 1)'
-    );
+    expect(updateOpacity('rgba(132, 23, 2, 1)', 1)).toEqual('rgba(132,23,2,1)');
   });
 });
