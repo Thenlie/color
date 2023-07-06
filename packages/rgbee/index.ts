@@ -1,3 +1,3 @@
-import { ThemeContext, ThemeProvider } from './src/theme';
-
-export { ThemeContext, ThemeProvider };
+export * from './src/utils';
+export * from './src/theme';
+export * from './src/types';

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { ColorType, Palette } from '../types';
 import { VALID_HEX_CHARS, VALID_HEX_LENGTHS } from '../constants';
 
@@ -141,8 +142,6 @@ const validatePalette = (palette: Palette): boolean => {
 };
 
 export {
-  VALID_HEX_CHARS,
-  VALID_HEX_LENGTHS,
   validateHex,
   validateRGBA,
   validateRGB,

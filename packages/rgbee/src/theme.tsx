@@ -88,7 +88,6 @@ const ThemeProvider = ({
   children,
   palette = defaultPalette,
 }: ThemeProviderProps) => {
-  console.log(palette);
   const isValid = validatePalette(palette);
   if (!isValid) throw new Error('Invalid palette provided to ThemeProvider!');
 
