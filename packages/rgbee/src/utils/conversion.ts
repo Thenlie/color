@@ -98,13 +98,13 @@ const rgbToRgba = (rgb: string): string => {
 const unknownToRgba = (color: string): string => {
   const colorType = validateColorType(color);
   switch (colorType) {
-    case ColorType.HEX:
-      color = hexToRgba(color);
+    case ColorType.RGBA:
       break;
     case ColorType.RGB:
       color = rgbToRgba(color);
       break;
-    case ColorType.RGBA:
+    case ColorType.HEX:
+      color = hexToRgba(color);
       break;
     case ColorType.INVALID:
       throw new Error('Invalid color string!');
