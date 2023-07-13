@@ -8,7 +8,7 @@ import { rgbaToArray, unknownToRgba } from './conversion';
  * @param color | Color to find luminance of
  * @returns {number}
  */
-const getLuminosity = (color: string): number => {
+export const getLuminosity = (color: string): number => {
   // TODO: Consider the alpha value
   const rgba = unknownToRgba(color);
   const array = rgbaToArray(rgba);
@@ -30,7 +30,10 @@ const getLuminosity = (color: string): number => {
  * @param foreground | The foreground color
  * @returns {number}
  */
-const getContrastRatio = (background: string, foreground: string): number => {
+export const getContrastRatio = (
+  background: string,
+  foreground: string
+): number => {
   const backgroundLum = getLuminosity(background);
   const foregroundLum = getLuminosity(foreground);
   const L1 = backgroundLum >= foregroundLum ? backgroundLum : foregroundLum;
@@ -46,7 +49,7 @@ const getContrastRatio = (background: string, foreground: string): number => {
  * @param background | Background color text will appear on
  * @returns {string}
  */
-const getTextColor = (background: string): string => {
+export const getTextColor = (background: string): string => {
   const rgba = unknownToRgba(background);
   if (getLuminosity(rgba) > 0.5) {
     return 'rgba(0,0,0,0)';
@@ -54,5 +57,3 @@ const getTextColor = (background: string): string => {
     return 'rgba(255,255,255,0)';
   }
 };
-
-export { getLuminosity, getContrastRatio, getTextColor };

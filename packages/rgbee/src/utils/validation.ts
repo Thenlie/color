@@ -11,7 +11,7 @@ import {
  * @param hex | Hex value to be validated
  * @returns {boolean}
  */
-const validateHex = (hex: string): boolean => {
+export const validateHex = (hex: string): boolean => {
   if (hex.charAt(0) !== '#') {
     console.error(`Invalid hex string ${hex}! Not prefixed with '#'.`);
     return false;
@@ -48,7 +48,7 @@ const validateHex = (hex: string): boolean => {
  * @param rgb | RGB value to be validated
  * @returns {boolean}
  */
-const validateRGB = (rgb: string): boolean => {
+export const validateRGB = (rgb: string): boolean => {
   // Remove spaces from string
   rgb = rgb.replace(/\s/g, '');
   const regex = /rgb\((\d{1,3},){2}\d{1,3}\)/g;
@@ -76,7 +76,7 @@ const validateRGB = (rgb: string): boolean => {
  * @param rgba | RGBA value to be validated
  * @returns {boolean}
  */
-const validateRGBA = (rgba: string): boolean => {
+export const validateRGBA = (rgba: string): boolean => {
   // Remove spaces from string
   // TODO: Break out into dedicated function
   rgba = rgba.replace(/\s/g, '');
@@ -106,7 +106,7 @@ const validateRGBA = (rgba: string): boolean => {
  * @param color | Color string to be validated
  * @returns {boolean}
  */
-const validateUnknown = (color: string): boolean => {
+export const validateUnknown = (color: string): boolean => {
   const isHex = validateHex(color);
   if (isHex) return true;
   const isRgba = validateRGBA(color);
@@ -121,7 +121,7 @@ const validateUnknown = (color: string): boolean => {
  * @param color | Unknown color to be validated
  * @returns {ColorType}
  */
-const validateColorType = (color: string): ColorType => {
+export const validateColorType = (color: string): ColorType => {
   const isHex = validateHex(color);
   if (isHex) return ColorType.HEX;
   const isRgba = validateRGBA(color);
@@ -131,7 +131,7 @@ const validateColorType = (color: string): ColorType => {
   return ColorType.INVALID;
 };
 
-const validateColorString = (color: string): boolean => {
+export const validateColorString = (color: string): boolean => {
   if (VALID_COLOR_STRINGS.includes(color.toLowerCase())) {
     return true;
   }
@@ -143,7 +143,7 @@ const validateColorString = (color: string): boolean => {
  * @param palette | Custom color palette to be validated
  * @returns {boolean}
  */
-const validatePalette = (palette: Palette): boolean => {
+export const validatePalette = (palette: Palette): boolean => {
   if (!palette.primary || !palette.secondary || !palette.action) return false;
   console.log(validateUnknown(palette.primary));
   const isValid =
@@ -159,19 +159,8 @@ const validatePalette = (palette: Palette): boolean => {
  * @param opacity | Opacity value to be validated
  * @returns {boolean}
  */
-const validateOpacity = (opacity: number): boolean => {
+export const validateOpacity = (opacity: number): boolean => {
   if (opacity === 0 || opacity === 1) return true;
   const regex = /(0.\d|1.0)$/g;
   return regex.test(opacity.toString());
-};
-
-export {
-  validateHex,
-  validateRGBA,
-  validateRGB,
-  validateUnknown,
-  validateColorType,
-  validateColorString,
-  validatePalette,
-  validateOpacity,
 };

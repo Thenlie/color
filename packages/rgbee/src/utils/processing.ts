@@ -8,7 +8,7 @@ import { validateOpacity, validateRGBA, validateUnknown } from './validation';
  * @param opacity | Opacity value from 0.0 - 1.0
  * @returns {string}
  */
-const updateOpacity = (color: string, opacity: number): string => {
+export const updateOpacity = (color: string, opacity: number): string => {
   let isValid = validateUnknown(color);
   if (!isValid) throw new Error('Invalid color string!');
   isValid = validateOpacity(opacity);
@@ -26,5 +26,3 @@ const updateOpacity = (color: string, opacity: number): string => {
   }
   return newRgba;
 };
-
-export { updateOpacity };

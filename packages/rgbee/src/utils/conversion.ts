@@ -11,7 +11,7 @@ import {
  * @param hex | Hex value to be converted to a string
  * @returns {number}
  */
-const hexToDec = (hex: string): number => {
+export const hexToDec = (hex: string): number => {
   return parseInt(hex, 16);
 };
 
@@ -21,7 +21,7 @@ const hexToDec = (hex: string): number => {
  * @param hex | Hex value to be converted to rgba
  * @returns {string}
  */
-const hexToRgba = (hex: string): string => {
+export const hexToRgba = (hex: string): string => {
   const isValid = validateHex(hex);
   if (!isValid) throw new Error('Invalid hex string!');
   // Remove '#' prefix
@@ -42,7 +42,7 @@ const hexToRgba = (hex: string): string => {
  * @param dec | Decimal number to be converted to hex
  * @returns {string}
  */
-const decToHex = (dec: number): string => {
+export const decToHex = (dec: number): string => {
   let hex = dec.toString(16);
   if (hex.length < 2) hex = '0' + hex;
   return hex;
@@ -53,7 +53,7 @@ const decToHex = (dec: number): string => {
  * @param rgb | RGB/RGBA value to be converted to hexadecimal
  * @returns {string}
  */
-const rgbToHex = (rgb: string): string => {
+export const rgbToHex = (rgb: string): string => {
   // Remove spaces from string
   rgb = rgb.replace(/\s/g, '');
   const isValid = validateRGBA(rgb) || validateRGB(rgb);
@@ -76,7 +76,7 @@ const rgbToHex = (rgb: string): string => {
  * @param rgb | RGB value to be converted to RGBA
  * @returns
  */
-const rgbToRgba = (rgb: string): string => {
+export const rgbToRgba = (rgb: string): string => {
   // Remove spaces from string
   rgb = rgb.replace(/\s/g, '');
   const isValid = validateRGBA(rgb) || validateRGB(rgb);
@@ -95,7 +95,7 @@ const rgbToRgba = (rgb: string): string => {
  * @throws {Error}
  * @returns {string}
  */
-const unknownToRgba = (color: string): string => {
+export const unknownToRgba = (color: string): string => {
   const colorType = validateColorType(color);
   switch (colorType) {
     case ColorType.RGBA:
@@ -118,7 +118,7 @@ const unknownToRgba = (color: string): string => {
  * @param rgba | RGBA string to be converted to array
  * @returns {Array<string>}
  */
-const rgbaToArray = (rgba: string): Array<string> => {
+export const rgbaToArray = (rgba: string): Array<string> => {
   // Remove spaces from string
   rgba = rgba.replace(/\s/g, '');
   const isValid = validateRGBA(rgba);
@@ -128,14 +128,4 @@ const rgbaToArray = (rgba: string): Array<string> => {
   // Remove parenthesis
   rgba = rgba.substring(1, rgba.length - 1);
   return rgba.split(',');
-};
-
-export {
-  hexToDec,
-  hexToRgba,
-  decToHex,
-  rgbToHex,
-  rgbToRgba,
-  unknownToRgba,
-  rgbaToArray,
 };
