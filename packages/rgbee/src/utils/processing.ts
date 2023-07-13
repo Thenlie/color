@@ -14,10 +14,12 @@ const updateOpacity = (color: string, opacity: number): string => {
   isValid = validateOpacity(opacity);
   if (!isValid) throw new Error('Invalid opacity value!');
   const rgba = unknownToRgba(color);
+  // Replace the alpha value with the provide opacity
   const newRgba = rgba.replace(
     /,(\d\.\d|\d{1,3})\)/gm,
     `,${opacity.toString()})`
   );
+  // Safety check, this should never be false
   isValid = validateRGBA(newRgba);
   if (!isValid) {
     throw new Error('Oops, something went wrong! See src/utils/processing.tsx');

@@ -1,5 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
 import {
+  validateColorString,
   validateColorType,
   validateHex,
   validateOpacity,
@@ -56,6 +57,14 @@ describe('Validation module passing', () => {
 
   test('validateColorType returns correct color type', () => {
     expect(validateColorType('#000000')).toEqual(ColorType.HEX);
+  });
+
+  test('validateColorString accepts valid color strings', () => {
+    expect(validateColorString('red')).toBe(true);
+    expect(validateColorString('blue')).toBe(true);
+    expect(validateColorString('lightblue')).toBe(true);
+    expect(validateColorString('Black')).toBe(true);
+    expect(validateColorString('WHITE')).toBe(true);
   });
 
   test('validatePalette accepts valid color palettes', () => {
@@ -120,6 +129,11 @@ describe('Validation module failing', () => {
 
   test('validateColorType returns invalid color type', () => {
     expect(validateColorType('#00')).toEqual(ColorType.INVALID);
+  });
+
+  test('validateColorString rejects invalid color strings', () => {
+    expect(validateColorString('deg')).toBe(false);
+    expect(validateColorString('wite')).toBe(false);
   });
 
   test('validatePalette rejects invalid color palettes', () => {

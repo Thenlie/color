@@ -1,6 +1,10 @@
 /* eslint-disable no-console */
 import { ColorType, Palette } from '../types';
-import { VALID_HEX_CHARS, VALID_HEX_LENGTHS } from '../constants';
+import {
+  VALID_COLOR_STRINGS,
+  VALID_HEX_CHARS,
+  VALID_HEX_LENGTHS,
+} from '../constants';
 
 /**
  * Check if a provided string is a valid hex value
@@ -127,6 +131,13 @@ const validateColorType = (color: string): ColorType => {
   return ColorType.INVALID;
 };
 
+const validateColorString = (color: string): boolean => {
+  if (VALID_COLOR_STRINGS.includes(color.toLowerCase())) {
+    return true;
+  }
+  return false;
+};
+
 /**
  * Validate a custom 3-color palette
  * @param palette | Custom color palette to be validated
@@ -160,6 +171,7 @@ export {
   validateRGB,
   validateUnknown,
   validateColorType,
+  validateColorString,
   validatePalette,
   validateOpacity,
 };
