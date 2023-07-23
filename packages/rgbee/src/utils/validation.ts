@@ -8,6 +8,7 @@ import {
 
 /**
  * Check if a provided string is a valid hex value
+ * Accepts lowercase and uppercase characters
  * @param hex | Hex value to be validated
  * @returns {boolean}
  */

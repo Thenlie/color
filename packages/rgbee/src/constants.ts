@@ -18,6 +18,12 @@ export const VALID_HEX_CHARS = [
   'd',
   'e',
   'f',
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'F',
 ];
 
 export const VALID_COLOR_STRINGS = [
