@@ -31,7 +31,7 @@ export const hexToRgba = (hex: string): string => {
   const arr = hex.length === 3 ? hex.split('') : hex.match(/.{2}/g);
   if (!arr) throw new Error('Something went wrong!');
   // Fill in alpha value if needed
-  if (arr.length < 4) arr.push('0');
+  if (arr.length < 4) arr.push('1');
   return `rgba(${hexToDec(arr[0])},${hexToDec(arr[1])},${hexToDec(
     arr[2]
   )},${hexToDec(arr[3])})`;
@@ -64,10 +64,9 @@ export const rgbToHex = (rgb: string): string => {
   // Remove parenthesis
   rgb = rgb.substring(1, rgb.length - 1);
   const arr = rgb.split(',');
-  if (arr.length < 4) arr.push('0');
   return `#${decToHex(parseInt(arr[0]))}${decToHex(parseInt(arr[1]))}${decToHex(
     parseInt(arr[2])
-  )}${decToHex(parseInt(arr[3]))}`;
+  )}`;
 };
 
 /**
@@ -83,8 +82,8 @@ export const rgbToRgba = (rgb: string): string => {
   if (!isValid) throw new Error('Invalid RGB string!');
   // Update prefix
   rgb = rgb.substring(0, 3) + 'a' + rgb.substring(3);
-  // Add alpha value set to 0
-  rgb = rgb.substring(0, rgb.length - 1) + ',0' + rgb.substring(rgb.length - 1);
+  // Add alpha value set to 1
+  rgb = rgb.substring(0, rgb.length - 1) + ',1' + rgb.substring(rgb.length - 1);
   return rgb;
 };
 

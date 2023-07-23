@@ -67,7 +67,7 @@ const normalColors: ColorFixture[] = [
     hex: '#da70d6',
     shortHex: null,
     rgb: 'rgb(218,112,214)',
-    rgba: 'rgba(255,0,255,1)',
+    rgba: 'rgba(218,112,214,1)',
   },
   {
     // yellow green
