@@ -8,7 +8,7 @@ import {
   unknownToRgba,
   rgbaToArray,
 } from '../conversion';
-import { normalColors } from '../__fixtures__/fixtures';
+import { normalColors, upperCaseHex } from '../__fixtures__/fixtures';
 
 describe('Conversion module (passing ✅)', () => {
   test('hexToDec correctly converts hexadecimal to decimal', () => {
@@ -25,6 +25,12 @@ describe('Conversion module (passing ✅)', () => {
   });
   test.each(normalColors)(
     'hexToRgba correctly converts valid hex strings',
+    ({ hex, rgba }) => {
+      expect(hexToRgba(hex)).toEqual(rgba);
+    }
+  );
+  test.each(upperCaseHex)(
+    'hexToRgba correctly converts valid upper case hex strings',
     ({ hex, rgba }) => {
       expect(hexToRgba(hex)).toEqual(rgba);
     }
