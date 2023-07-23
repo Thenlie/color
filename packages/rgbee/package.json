@@ -6,7 +6,7 @@
   "main": "theme.tsx",
   "scripts": {
     "test": "jest --silent",
-    "lint": "npx eslint --ext .ts,.tsx,.js,.jsx src ../pages/src --fix"
+    "lint": "npx eslint --ext ts,tsx src --fix"
   },
   "keywords": [],
   "author": "Thenlie",
