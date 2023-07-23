@@ -13,8 +13,10 @@ import { normalColors, upperCaseHex } from '../__fixtures__/fixtures';
 describe('Conversion module (passing ✅)', () => {
   test('hexToDec correctly converts hexadecimal to decimal', () => {
     expect(hexToDec('00')).toEqual(0);
+    expect(hexToDec('01')).toEqual(1);
     expect(hexToDec('ff')).toEqual(255);
     expect(hexToDec('3b')).toEqual(59);
+    expect(hexToDec('8c')).toEqual(140);
   });
   test('decToHex correctly converts decimal to hexadecimal', () => {
     expect(decToHex(0)).toEqual('00');
