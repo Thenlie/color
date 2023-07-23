@@ -8,21 +8,13 @@ import {
   unknownToRgba,
   rgbaToArray,
 } from '../conversion';
+import { normalColors } from '../__fixtures__/fixtures';
 
 describe('Conversion module (passing ✅)', () => {
   test('hexToDec correctly converts hexadecimal to decimal', () => {
     expect(hexToDec('00')).toEqual(0);
     expect(hexToDec('ff')).toEqual(255);
     expect(hexToDec('3b')).toEqual(59);
-  });
-  test('hexToRgba correctly converts hexadecimal to RGBA', () => {
-    expect(hexToRgba('#000000')).toEqual('rgba(0,0,0,0)');
-    expect(hexToRgba('#ffffff')).toEqual('rgba(255,255,255,0)');
-    expect(hexToRgba('#aabbcc')).toEqual('rgba(170,187,204,0)');
-    expect(hexToRgba('#003400')).toEqual('rgba(0,52,0,0)');
-    expect(hexToRgba('#2aff00')).toEqual('rgba(42,255,0,0)');
-    expect(hexToRgba('#ffffffff')).toEqual('rgba(255,255,255,255)');
-    expect(hexToRgba('#000000ff')).toEqual('rgba(0,0,0,255)');
   });
   test('decToHex correctly converts decimal to hexadecimal', () => {
     expect(decToHex(0)).toEqual('00');
@@ -31,31 +23,31 @@ describe('Conversion module (passing ✅)', () => {
     expect(decToHex(42)).toEqual('2a');
     expect(decToHex(52)).toEqual('34');
   });
-  test('rgbToHex correctly converts RGB to hexadecimal', () => {
-    expect(rgbToHex('rgb(0,0,0)')).toEqual('#00000000');
-    expect(rgbToHex('rgb(255,255,255)')).toEqual('#ffffff00');
-    expect(rgbToHex('rgb(24,134,0)')).toEqual('#18860000');
-    expect(rgbToHex('rgb(143,214,12)')).toEqual('#8fd60c00');
-    expect(rgbToHex('rgb(12,6,123)')).toEqual('#0c067b00');
-    expect(rgbToHex('rgb(0,255,123)')).toEqual('#00ff7b00');
-  });
-  test('rgbToRgba correctly converts RGB to RGBA', () => {
-    expect(rgbToRgba('rgb(0,0,0)')).toEqual('rgba(0,0,0,0)');
-    expect(rgbToRgba('rgb(255,255,255)')).toEqual('rgba(255,255,255,0)');
-    expect(rgbToRgba('rgb(13,156,24)')).toEqual('rgba(13,156,24,0)');
-    expect(rgbToRgba('rgb(56,67,3)')).toEqual('rgba(56,67,3,0)');
-    expect(rgbToRgba('rgb(123,255,0)')).toEqual('rgba(123,255,0,0)');
-    expect(rgbToRgba('rgb(7,255,245)')).toEqual('rgba(7,255,245,0)');
-  });
-  test('unknownToRgba correctly converts any valid color string to RGBA', () => {
-    expect(unknownToRgba('#000000')).toEqual('rgba(0,0,0,0)');
-    expect(unknownToRgba('#ffffff')).toEqual('rgba(255,255,255,0)');
-    expect(unknownToRgba('rgb(0,0,0)')).toEqual('rgba(0,0,0,0)');
-    expect(unknownToRgba('rgb(255,255,255)')).toEqual('rgba(255,255,255,0)');
-    expect(unknownToRgba('rgba(255,255,255,0)')).toEqual('rgba(255,255,255,0)');
-    expect(unknownToRgba('rgba(0,0,0,0)')).toEqual('rgba(0,0,0,0)');
-    expect(unknownToRgba('rgba(0, 0, 0, 0)')).toEqual('rgba(0,0,0,0)');
-  });
+  test.each(normalColors)(
+    'hexToRgba correctly converts valid hex strings',
+    ({ hex, rgba }) => {
+      expect(hexToRgba(hex)).toEqual(rgba);
+    }
+  );
+  test.each(normalColors)(
+    'rgbToHex correctly converts RGB to hexadecimal',
+    ({ hex, rgb }) => {
+      expect(rgbToHex(rgb)).toEqual(hex);
+    }
+  );
+  test.each(normalColors)(
+    'rgbToRgba correctly converts RGB to RGBA',
+    ({ rgb, rgba }) => {
+      expect(rgbToRgba(rgb)).toEqual(rgba);
+    }
+  );
+  test.each(normalColors)(
+    'unknownToRgba correctly converts any valid color string to RGBA',
+    ({ hex, rgb, rgba }) => {
+      expect(unknownToRgba(hex)).toEqual(rgba);
+      expect(unknownToRgba(rgb)).toEqual(rgba);
+    }
+  );
   test('rgbaToArray correctly converts RGBA to an array of values', () => {
     expect(rgbaToArray('rgba(0,0,0,0)')).toEqual(['0', '0', '0', '0']);
     expect(rgbaToArray('rgba(255,255,255,1)')).toEqual([
