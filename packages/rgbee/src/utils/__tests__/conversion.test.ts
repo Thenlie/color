@@ -54,17 +54,12 @@ describe('Conversion module (passing ✅)', () => {
       expect(unknownToRgba(rgb)).toEqual(rgba);
     }
   );
-  test('rgbaToArray correctly converts RGBA to an array of values', () => {
-    expect(rgbaToArray('rgba(0,0,0,0)')).toEqual(['0', '0', '0', '0']);
-    expect(rgbaToArray('rgba(255,255,255,1)')).toEqual([
-      '255',
-      '255',
-      '255',
-      '1',
-    ]);
-    expect(rgbaToArray('rgba(1,23,234,1)')).toEqual(['1', '23', '234', '1']);
-    expect(rgbaToArray('rgba(34,5,21,0)')).toEqual(['34', '5', '21', '0']);
-  });
+  test.each(normalColors)(
+    'rgbaToArray correctly converts RGBA to an array of values',
+    ({ rgba, array }) => {
+      expect(rgbaToArray(rgba)).toEqual(array);
+    }
+  );
 });
 
 describe('Conversion module (failing ❌)', () => {

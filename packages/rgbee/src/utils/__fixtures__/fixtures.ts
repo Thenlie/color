@@ -3,6 +3,7 @@ type ColorFixture = {
   shortHex: string | null;
   rgb: string;
   rgba: string;
+  array: string[];
 };
 
 const normalColors: ColorFixture[] = [
@@ -12,6 +13,7 @@ const normalColors: ColorFixture[] = [
     shortHex: '#000',
     rgb: 'rgb(0,0,0)',
     rgba: 'rgba(0,0,0,1)',
+    array: ['0', '0', '0', '1'],
   },
   {
     // white
@@ -19,6 +21,7 @@ const normalColors: ColorFixture[] = [
     shortHex: '#fff',
     rgb: 'rgb(255,255,255)',
     rgba: 'rgba(255,255,255,1)',
+    array: ['255', '255', '255', '1'],
   },
   {
     // red
@@ -26,6 +29,7 @@ const normalColors: ColorFixture[] = [
     shortHex: '#f00',
     rgb: 'rgb(255,0,0)',
     rgba: 'rgba(255,0,0,1)',
+    array: ['255', '0', '0', '1'],
   },
   {
     // green
@@ -33,6 +37,7 @@ const normalColors: ColorFixture[] = [
     shortHex: '#0f0',
     rgb: 'rgb(0,255,0)',
     rgba: 'rgba(0,255,0,1)',
+    array: ['0', '255', '0', '1'],
   },
   {
     // blue
@@ -40,6 +45,7 @@ const normalColors: ColorFixture[] = [
     shortHex: '#00f',
     rgb: 'rgb(0,0,255)',
     rgba: 'rgba(0,0,255,1)',
+    array: ['0', '0', '255', '1'],
   },
   {
     // yellow
@@ -47,6 +53,7 @@ const normalColors: ColorFixture[] = [
     shortHex: '#ff0',
     rgb: 'rgb(255,255,0)',
     rgba: 'rgba(255,255,0,1)',
+    array: ['255', '255', '0', '1'],
   },
   {
     // cyan
@@ -54,6 +61,7 @@ const normalColors: ColorFixture[] = [
     shortHex: '#0ff',
     rgb: 'rgb(0,255,255)',
     rgba: 'rgba(0,255,255,1)',
+    array: ['0', '255', '255', '1'],
   },
   {
     // magenta
@@ -61,6 +69,7 @@ const normalColors: ColorFixture[] = [
     shortHex: '#f0f',
     rgb: 'rgb(255,0,255)',
     rgba: 'rgba(255,0,255,1)',
+    array: ['255', '0', '255', '1'],
   },
   {
     // orchid
@@ -68,6 +77,7 @@ const normalColors: ColorFixture[] = [
     shortHex: null,
     rgb: 'rgb(218,112,214)',
     rgba: 'rgba(218,112,214,1)',
+    array: ['218', '112', '214', '1'],
   },
   {
     // yellow green
@@ -75,6 +85,7 @@ const normalColors: ColorFixture[] = [
     shortHex: null,
     rgb: 'rgb(154,205,50)',
     rgba: 'rgba(154,205,50,1)',
+    array: ['154', '205', '50', '1'],
   },
   {
     // light blue
@@ -82,6 +93,7 @@ const normalColors: ColorFixture[] = [
     shortHex: null,
     rgb: 'rgb(173,216,230)',
     rgba: 'rgba(173,216,230,1)',
+    array: ['173', '216', '230', '1'],
   },
   {
     // tan
@@ -89,6 +101,7 @@ const normalColors: ColorFixture[] = [
     shortHex: null,
     rgb: 'rgb(210,180,140)',
     rgba: 'rgba(210,180,140,1)',
+    array: ['210', '180', '140', '1'],
   },
 ];
 
