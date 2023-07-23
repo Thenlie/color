@@ -10,6 +10,7 @@ import {
   validateUnknown,
 } from '../validation';
 import { ColorType } from '../../types';
+import { invalidColors } from '../__fixtures__';
 
 describe('Validation module passing', () => {
   test('validateHex accepts valid hex strings', () => {
@@ -33,8 +34,8 @@ describe('Validation module passing', () => {
   test('validateRGBA accepts valid RGBA strings', () => {
     expect(validateRGBA('rgba(0,0,0,0)')).toEqual(true);
     expect(validateRGBA('rgba(0, 0, 0, 0)')).toEqual(true);
-    expect(validateRGBA('rgba(255,255,255,255)')).toEqual(true);
-    expect(validateRGBA('rgba(25,0,12,255)')).toEqual(true);
+    expect(validateRGBA('rgba(255,255,255,1)')).toEqual(true);
+    expect(validateRGBA('rgba(25,0,12,1)')).toEqual(true);
     expect(validateRGBA('rgba(1,255,255,0)')).toEqual(true);
     expect(validateRGBA('rgba(55,25,255,0)')).toEqual(true);
     expect(validateRGBA('rgba(0,0,0,0.1)')).toEqual(true);
@@ -52,7 +53,7 @@ describe('Validation module passing', () => {
     expect(validateUnknown('rgb(255,255,255)')).toEqual(true);
     expect(validateUnknown('rgba(0,0,0,0)')).toEqual(true);
     expect(validateUnknown('rgba(0, 0, 0, 0)')).toEqual(true);
-    expect(validateUnknown('rgba(255,255,255,255)')).toEqual(true);
+    expect(validateUnknown('rgba(255,255,255,1)')).toEqual(true);
   });
 
   test('validateColorType returns correct color type', () => {
@@ -105,14 +106,12 @@ describe('Validation module failing', () => {
     expect(validateRGB('rbg(25,0,255)')).toEqual(false);
   });
 
-  test('validateRGBA rejects invalid RGBA strings', () => {
-    expect(validateRGBA('#000000')).toEqual(false);
-    expect(validateRGBA('rgb(0,0,0)')).toEqual(false);
-    expect(validateRGBA('rgba(0,0,0)')).toEqual(false);
-    expect(validateRGBA('rgba(-1, 0, 0, 0)')).toEqual(false);
-    expect(validateRGBA('rgba(256,255,255,255)')).toEqual(false);
-    expect(validateRGBA('rbga(25,0,12,255)')).toEqual(false);
-  });
+  test.each(invalidColors)(
+    'validateRGBA rejects invalid RGBA string $rgba',
+    ({ rgba }) => {
+      expect(validateRGBA(rgba)).toEqual(false);
+    }
+  );
 
   test('validateUnknown rejects invalid color strings', () => {
     expect(validateUnknown('#00')).toEqual(false);

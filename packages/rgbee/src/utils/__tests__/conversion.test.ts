@@ -84,7 +84,7 @@ describe('Conversion module (failing ❌)', () => {
     }
   );
   test.each(invalidColors)(
-    'unknownToRgba throws error when given invalid color string %s',
+    'unknownToRgba throws error when given invalid color string',
     ({ hex, rgb, rgba }) => {
       expect(() => unknownToRgba(hex)).toThrow('Invalid color string!');
       expect(() => unknownToRgba(rgb)).toThrow('Invalid color string!');

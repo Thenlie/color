@@ -4,7 +4,7 @@ import { getContrastRatio, getLuminosity, getTextColor } from '../calculation';
 describe('Calculation module', () => {
   test('getLuminosity returns the correct luminance of a given color', () => {
     expect(getLuminosity('rgba(0,0,0,0)')).toBe(0);
-    expect(getLuminosity('rgba(255,255,255,255)')).toBe(1);
+    expect(getLuminosity('rgba(255,255,255,1)')).toBe(1);
     expect(getLuminosity('#000000')).toBe(0);
     expect(getLuminosity('#ffffff')).toBe(1);
     expect(getLuminosity('#01d3a8')).toBeCloseTo(0.49422137476, 5);

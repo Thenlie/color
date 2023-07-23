@@ -81,24 +81,31 @@ export const validateRGBA = (rgba: string): boolean => {
   // Remove spaces from string
   // TODO: Break out into dedicated function
   rgba = rgba.replace(/\s/g, '');
-  const regex = /rgba\((\d{1,3},){3}(\d.\d|\d{1,3})\)/g;
+  const regex = /rgba\((\d{1,3},){3}(\d\.\d{1,2}|\d{1,3})\)/g;
   if (!regex.test(rgba)) return false;
   // Remove 'rgba' prefix
   rgba = rgba.substring(4);
   // Remove parenthesis
   rgba = rgba.substring(1, rgba.length - 1);
   const arr = rgba.split(',');
-  // Check that values are between 0-255
-  let isValid = true;
-  arr.every((x) => {
-    if (parseInt(x) < 0 || parseInt(x) > 255) {
+  // Check that rgb values are between 0-255
+  if (arr.length !== 4) return false;
+  for (let i = 0; i < arr.length - 1; i++) {
+    const target = parseInt(arr[i]);
+    if (target < 0 || target > 255) {
       console.error('Invalid rgba string! Values must be between 0-255.');
-      isValid = false;
       return false;
     }
-    return true;
-  });
-  return isValid;
+  }
+  // Check that alpha value is between 0-1
+  const alpha = parseFloat(arr[3]);
+  const alphaDecimal = alpha.toString().split('.');
+  if (alpha < 0 || alpha > 1) {
+    return false;
+  } else if (alphaDecimal[1] && alphaDecimal[1].length > 2) {
+    return false;
+  }
+  return true;
 };
 
 /**
